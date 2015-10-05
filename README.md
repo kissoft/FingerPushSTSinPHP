@@ -13,6 +13,7 @@ require_once ('Fingerpush/autoload.php');
 
 
 ##사용하기
+###기본 설정
 기본 앱정보를 설정합니다.
 
 + `appkey` 발급받은 Appkey
@@ -61,7 +62,7 @@ senddate | string | | 예약발송인 경우 예약 발송일 ex) yyyymmdd24hmin
 tag | string | | 메시지 발송 tag
 
 ####일괄 발송
-
+앱을 사용하는 모든 사용자에게 동일한 메시지를 발송합니다. 발송하고자 하는 메시지를 `msg`에 담아 전달합니다.
 #####Example
 ``` php
 $param = array (
@@ -137,17 +138,17 @@ $response = $fp->sendPush ();
 
 ###발송 결과
 발송을 완료하면 JSON으로 결과를 받을 수 있습니다.
-
-#####Example
-```js
-{“result” : “200”, “msgIdx” :  “A1DS33DDSQ2321”, “processCode” : “20001”, “message” : “메시지 등록이 처리되었습니다. 발급받은 메시지 아이디로 대상자 등록을 시작해 주세요.”}
-```
 Response Key | Description
 ------------ | ----------- 
 result | 결과 코드
 msgIdx | 메시지 번호
 processCode | 메시지 처리 단계
 Message | 결과 메시지
+
+#####Example
+```js
+{“result” : “200”, “msgIdx” :  “A1DS33DDSQ2321”, “processCode” : “20001”, “message” : “메시지 등록이 처리되었습니다. 발급받은 메시지 아이디로 대상자 등록을 시작해 주세요.”}
+```
 
 ####result code
 코드 | 내용 | 비고
