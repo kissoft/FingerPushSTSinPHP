@@ -3,7 +3,6 @@ FingerPushSTSinPHP
 PHP에서 Fingerpush Server to Server API를 쉽게 사용하기위한 Class.
 
 
-
 ##설치하기
 소스를 다운받아 압축을 풀어 원하는곳에 위치하고 소스에 포함시킵니다
 
@@ -13,10 +12,8 @@ require_once ('Fingerpush/autoload.php');
 ```
 
 
-
-##사용법
+##사용하기
 기본 앱정보를 설정합니다.
-
 
 + `appkey` 발급받은 Appkey
 + `appsecret` 발급받은 AppSecret
@@ -64,6 +61,7 @@ senddate | string | | 예약발송인 경우 예약 발송일 ex) yyyymmdd24hmin
 tag | string | | 메시지 발송 tag
 
 ####일괄 발송
+
 #####Example
 ``` php
 $param = array (
@@ -93,6 +91,9 @@ $param = array (
 $fp->setParam ( $param );
 ```
 ####다수의 대상자 발송
+다수의 사용자에게 메시지를 전송할 경우, 데이터 베이스나 리스트의 사용자 목록을 `identity`에 배열로 담아 전달합니다.
+사용자에게 가기 다른 메시지를 전달하고자 할 경우, `identity`배열과 동일한 크기로 배열에 담아 `message`에 전달합니다.
+`message`의 값이 없는 경우, `msg`의 값으로 모두 동일한 메시지가 전송됩니다.
 #####Example
 ``` php
 $arrayUser = array();
