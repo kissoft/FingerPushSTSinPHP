@@ -14,6 +14,7 @@ require_once ('Fingerpush/autoload.php');
 
 ##사용하기
 ###기본 설정
+
 기본 앱정보를 설정합니다.
 
 + `appkey` 발급받은 Appkey
@@ -35,6 +36,9 @@ $fp = new Fingerpush\Fingerpush ( $key );
 
 
 ###옵션 설정
+
+발송을 위한 옵션을 세팅합니다.
+필요한 옵션을 세팅하고 배열로 담아 `setParam`함수에 전달합니다.
 
 Option | Type | Default | Description
 ------ | ---- | ------- | -----------
@@ -138,17 +142,13 @@ $response = $fp->sendPush ();
 
 ###발송 결과
 발송을 완료하면 JSON으로 결과를 받을 수 있습니다.
+
 Response Key | Description
 ------------ | ----------- 
 result | 결과 코드
 msgIdx | 메시지 번호
 processCode | 메시지 처리 단계
 Message | 결과 메시지
-
-#####Example
-```js
-{“result” : “200”, “msgIdx” :  “A1DS33DDSQ2321”, “processCode” : “20001”, “message” : “메시지 등록이 처리되었습니다. 발급받은 메시지 아이디로 대상자 등록을 시작해 주세요.”}
-```
 
 ####result code
 코드 | 내용 | 비고
@@ -166,3 +166,11 @@ Message | 결과 메시지
 20001 | 푸시 메시지 등록 정상 처리 | 메시지 아이디가 반환됨.
 20002 | 발송대상자 등록 정상 처리 | 
 20003 | 푸시 메시지 등록 완료 | 
+
+#####Example
+```js
+{“result” : “200”, “msgIdx” :  “A1DS33DDSQ2321”, “processCode” : “20001”, “message” : “메시지 등록이 처리되었습니다. 발급받은 메시지 아이디로 대상자 등록을 시작해 주세요.”}
+```
+
+
+
