@@ -57,7 +57,7 @@ ck3 | string | | 커스텀 키 3 (App 개발 시 반영 된 값)
 cv1 | string | | 커스텀 값 1 (App 개발 시 반영 된 값)
 cv2 | string | | 커스텀 값 2 (App 개발 시 반영 된 값)
 cv3 | string | | 커스텀 값 3 (App 개발 시 반영 된 값)
-link | string | | web link URL
+link | string | | 링크 URL 
 fnm | string | | 첨부이미지 파일 링크 URL
 mode | string | DEFT | DEFT : 일반 푸시 메시지 / LNGT : 내용이 많은 long text push
 lngt_message | string | | long text message
