@@ -4,7 +4,7 @@ PHP에서 Fingerpush Server to Server API를 쉽게 사용하기위한 Class.
 
 
 ##설치하기
-소스를 다운받아 압축을 풀어 원하는곳에 위치하고 소스에 포함시킵니다
+소스를 다운받아 압축을 풀어 Fingerpush폴더를 적당한 곳에 위치하고 자신의 소스에 포함시킵니다.
 
 #####Example
 ``` php
@@ -15,7 +15,7 @@ require_once ('Fingerpush/autoload.php');
 ##사용하기
 ###기본 설정
 
-기본 앱정보를 설정합니다.
+기본 앱 정보를 세팅하고 사용을 위해 클레스를 선언합니다.
 
 + `appkey` 발급받은 Appkey
 + `appsecret` 발급받은 AppSecret
