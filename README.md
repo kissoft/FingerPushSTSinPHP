@@ -42,7 +42,7 @@ $fp = new Fingerpush\Fingerpush ( $key );
 
 Option | Type | Default | Description
 ------ | ---- | ------- | -----------
-msg | string | Y | 발송할 푸시 메시지
+msg | string |  | 발송할 푸시 메시지
 identity | array |  | 푸시 메시지 수신 대상. 값이 없으면 일괄 발송
 Massage | array |  | 발송할 푸시 메시지. identity와 동일한 크기여야하며, 값이 없으면 msg로 발송
 isa | string | Y | 안드로이드를 사용하는 대상폰 발송
@@ -59,11 +59,11 @@ cv2 | string | | 커스텀 값 2 (App 개발 시 반영 된 값)
 cv3 | string | | 커스텀 값 3 (App 개발 시 반영 된 값)
 link | string | | web link URL
 fnm | string | | 첨부이미지 파일 링크 URL
-mode | string | DEFT | DEFT 일반 푸시 메시지 / LNGT 내용이 많은 long text push
+mode | string | DEFT | DEFT : 일반 푸시 메시지 / LNGT : 내용이 많은 long text push
 lngt_message | string | | long text message
 send_state | integer | 0001 | 0001 : 바로 발송 / 0002 : 예약발송
-senddate | integer | | 예약발송인 경우 예약 발송일 ex) yyyymmdd24hmin -> 201409172113
-tag | string | | 발송 tag ex) 서울,대전,대구,부산
+senddate | integer | | 예약발송인 경우 예약 발송일. ex) yyyymmdd24hmin -> 201409172113
+tag | string | | 발송 tag. 쉼표(,  ) 로 구분. ex) 서울,대전,대구,부산
 beschmode | integer | 0001 | 태그 발송 시 조건. 0001 : or / 0002 : and
 
 ####일괄 발송
