@@ -61,10 +61,10 @@ link | string | | 링크 URL
 fnm | string | | 첨부이미지 파일 링크 URL
 mode | string | DEFT | DEFT : 일반 푸시 메시지 / LNGT : 내용이 많은 long text push
 lngt_message | string | | long text message
-send_state | integer | 0001 | 0001 : 바로 발송 / 0002 : 예약발송
+send_state | string | 0001 | 0001 : 바로 발송 / 0002 : 예약발송
 senddate | integer | | 예약발송인 경우 예약 발송일. ex) yyyymmdd24hmin -> 201409172113
 tag | string | | 발송 tag. 쉼표(,  ) 로 구분. ex) 서울,대전,대구,부산
-beschmode | integer | 0001 | 태그 발송 시 조건. 0001 : or / 0002 : and
+beschmode | string | 0001 | 태그 발송 시 조건. 0001 : or / 0002 : and
 
 ####일괄 발송
 앱을 사용하는 모든 사용자에게 동일한 메시지를 발송합니다. 발송하고자 하는 메시지를 `msg`에 담아 전달합니다.
