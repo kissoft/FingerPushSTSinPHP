@@ -21,6 +21,11 @@ class FingerpushRequest {
 	const SEND_DOMAIN = 'https://fingerpush2.kissoft.biz:10443'; // test
 	//const SEND_DOMAIN = 'https://www.fingerpush.com'; // live
 	
+	///////////////////////////////////////
+	/* [PHP 5.6.0 이상에서만 사용하세요.] */
+	/* PHP 5.6.0 이하에서는 아래 내용을 주석처리 후 */
+	/* PHP 5.6.0 이하 버전용 소스의 주석(//로 숨겨진 라인)을 풀고 사용하세요. */
+	///////////////////////////////////////
 	/**
 	 * @const string 일괄 발송 API URL
 	 */
@@ -40,6 +45,41 @@ class FingerpushRequest {
 	 * @const string 다수 발송(최대 발송 건수 이상) API URL
 	 */
 	const SEND_TARGET_OVER_MAX_URL = self::SEND_DOMAIN.'/rest/sts/v1/setSTSPushs.jsp';
+	///////////////////////////////////////
+	
+	///////////////////////////////////////
+	/* [PHP 5.6.0 이하에서만 사용하세요.] */
+	/* PHP v5.6.0 이하에서는 위의 내용을 주석처리 후 */
+	/* 아래 주석(//로 숨겨진 라인)을 풀고 사용하세요. */
+	///////////////////////////////////////
+	/**
+	 * @const string 일괄 발송 API URL
+	 */
+	// public function SEND_TARGET_URL() {
+	// 	return self::SEND_DOMAIN.'/rest/sts/v1/setFingerPush.jsp';
+	// }
+	 
+	/**
+	 * @const string 단일 발송 API URL
+	 */
+	// public function SEND_TARGET_ONE_URL() {
+	// 	return self::SEND_DOMAIN.'/rest/sts/v1/setSTSpush.jsp';
+	// }
+	 
+	/**
+	 * @const string 다수 발송(최대 발송 건수 이하) API URL
+	 */
+	// public function SEND_TARGET_UNDER_MAX_URL() {
+	// 	return self::SEND_DOMAIN.'/rest/sts/v1/setSTSPushs.jsp';
+	// }
+	 
+	/**
+	 * @const string 다수 발송(최대 발송 건수 이상) API URL
+	 */
+	// public function SEND_TARGET_OVER_MAX_URL() {
+	// 	return self::SEND_DOMAIN.'/rest/sts/v1/setSTSPushs.jsp';
+	// }
+	///////////////////////////////////////
 	
 	/**
 	 *
@@ -78,6 +118,11 @@ class FingerpushRequest {
 		$this->apiUrl = $this->getApiUrl ();
 	}
 	
+	///////////////////////////////////////
+	/* [PHP 5.6.0 이상에서만 사용하세요.] */
+	/* PHP 5.6.0 이하에서는 아래 내용을 주석처리 후 */
+	/* PHP 5.6.0 이하 버전용 소스의 주석(//로 숨겨진 라인)을 풀고 사용하세요. */
+	///////////////////////////////////////
 	/**
 	 * itentity의 개수에 따라 URL 할당
 	 *
@@ -94,6 +139,30 @@ class FingerpushRequest {
 			return static::SEND_TARGET_OVER_MAX_URL;
 		}
 	}
+	///////////////////////////////////////
+	
+	///////////////////////////////////////
+	/* [PHP 5.6.0 이하에서만 사용하세요.] */
+	/* PHP v5.6.0 이하에서는 위의 내용을 주석처리 후 */
+	/* 아래 주석(//로 숨겨진 라인)을 풀고 사용하세요. */
+	///////////////////////////////////////	
+	/**
+	 * itentity의 개수에 따라 URL 할당
+	 *
+	 * @param FingerpushClient $client        	
+	 * @return string
+	 */
+	// public function getApiUrl() {
+	// 	$identity = $this->client->getIdentity ();
+	// 	if (! count($identity) ) {
+	// 		return static::SEND_TARGET_URL();
+	// 	} else if (count($identity) < self::SEND_ONCE_COUNT) {
+	// 		return static::SEND_TARGET_UNDER_MAX_URL();
+	// 	} else {
+	// 		return static::SEND_TARGET_OVER_MAX_URL();
+	// 	}
+	// }
+	///////////////////////////////////////
 	
 	/**
 	 *
