@@ -34,7 +34,21 @@ $param = array (
 		// 'cv1' => '',
 		// 'cv2' => '',
 		// 'cv3' => '',
-		// 'fnm' => ''
+		// 'fnm' => '',
+		// 'link' => '',
+		// 'mode' => 'DEFT',
+		// 'lngt_message' => '',
+		// 'send_state' => '0001',
+		// 'senddate' => '',
+		// 'title' => '',
+		// 'bgcolor' => '#FFFFFF',
+		// 'fcolor' => '#000000',
+		// 'lcode' => '',	
+		// 'isetiquette' => 'Y', 
+		// 'etiquette_stime' => '21',
+		// 'etiquette_etime' => '8', 
+		// 'and_priority' => 'M',
+		// 'optagree' => '0000'
 );
 
 $fp->setParam ( $param );
