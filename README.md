@@ -22,7 +22,7 @@ require_once ('Fingerpush/autoload.php');
 + `customerkey` 발급 받은 customer key
 
 각 키는 [핑거푸시홈페이지](https://www.fingerpush.com/)에서 발급가능하며, `customerkey`는 Pro이상의 서비스에 가입하여야 발급가능합니다.
-
+ 
 #####Example
 ``` php
 $key = array (
