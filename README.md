@@ -65,6 +65,16 @@ send_state | string | 0001 | 0001 : 바로 발송 / 0002 : 예약발송
 senddate | integer | | 예약발송인 경우 예약 발송일. ex) yyyymmdd24hmin -> 201409172113
 tag | string | | 발송 tag. 쉼표(,  ) 로 구분. ex) 서울,대전,대구,부산
 beschmode | string | 0001 | 태그 발송 시 조건. 0001 : or / 0002 : and
+title | string | | 푸시 수신 시 메시지 용 제목
+lcode | string | | 라벨 코드
+bgcolor | string | | 배경색 ex) #FFFFFF
+fcolor | string | | 폰트색상 ex) #000000
+isetiquette | string | Y | 에티켓 시간 적용 여부 (Y – 적용 (Default), N- 적용안함)
+etiquette_stime | integer | 21 | 에티켓 적용 시작시간 (Number type (1~ 24 : default 21))
+etiquette_etime | integer | 8 | 에티켓 적용 종료시간 (Number type (1~24 : default 8))
+and_priority | string | M | 안드로이드용 메시지 우선순위 (H : 높음, M 중간(default))
+optagree | string | 0000 | 0000 : default, 광고 수신 동의 여부에 관계없이 푸시 수신자 모두에게 발송. 1000 : 광고수신 동의한 디바이스에만 메시지 발송
+
 
 ####일괄 발송
 앱을 사용하는 모든 사용자에게 동일한 메시지를 발송합니다. 발송하고자 하는 메시지를 `msg`에 담아 전달합니다.
@@ -85,13 +95,22 @@ $param = array (
 		// 'cv2' => '',
 		// 'cv3' => '',
 		// 'fnm' => ''
-		//'link' => '',
-		//'fnm' => '',
-		//'mode' => '',
-		//'lngt_message' => '',
-		//'send_state' => '',
-		//'senddate' => '',
-		//'tag' => ''
+		// 'link' => '',
+		// 'fnm' => '',
+		// 'mode' => '',
+		// 'lngt_message' => '',
+		// 'send_state' => '',
+		// 'senddate' => '',
+		// 'tag' => '',
+		// 'title' => '',
+	    // 'bgcolor' => '#FFFFFF',
+	    // 'fcolor' => '#4374D9',
+	    // 'lcode' => '',
+	    // 'isetiquette' => 'Y',
+	    // 'etiquette_stime' => '21',
+	    // 'etiquette_etime' => '8',
+	    // 'and_priority' => 'M',
+	    // 'optagree' => '0000'
 );
 
 $fp->setParam ( $param );
@@ -126,6 +145,15 @@ $param = array (
 		// 'cv2' => '',
 		// 'cv3' => '',
 		// 'fnm' => ''
+		// 'title' => '',
+	    // 'bgcolor' => '#FFFFFF',
+	    // 'fcolor' => '#4374D9',
+	    // 'lcode' => '',
+	    // 'isetiquette' => 'Y',
+	    // 'etiquette_stime' => '20',
+	    // 'etiquette_etime' => '8',
+	    // 'and_priority' => 'M',
+	    // 'optagree' => '0000'
 );
 
 $fp->setParam ( $param );
@@ -172,6 +200,3 @@ Message | 결과 메시지
 ```js
 {“result” : “200”, “msgIdx” :  “A1DS33DDSQ2321”, “processCode” : “20001”, “message” : “메시지 등록이 처리되었습니다. 발급받은 메시지 아이디로 대상자 등록을 시작해 주세요.”}
 ```
-
-
-
