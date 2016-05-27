@@ -31,13 +31,23 @@ $param = array (
 		// 'cv2' => '',
 		// 'cv3' => '',
 		// 'fnm' => ''
-		//'link' => '',
-		//'fnm' => '',
-		//'mode' => '',
-		//'lngt_message' => '',
-		//'send_state' => '',
-		//'senddate' => '',
-		//'tag' => ''
+		// 'link' => '',
+		// 'fnm' => '',
+		// 'mode' => '',
+		// 'lngt_message' => '',
+		// 'send_state' => '',
+		// 'senddate' => '',
+		// 'tag' => ''
+		// 'beschmode' => '0001'
+	    // 'title' => '',
+	    // 'bgcolor' => '#ffffff',
+	    // 'fcolor' => '#000000',
+	    // 'lcode' => '',
+	    // 'isetiquette' => 'Y',
+	    // 'etiquette_stime' => '21',
+	    // 'etiquette_etime' => '8',
+	    // 'and_priority' => 'M',
+	    // 'optagree' => '0000',
 );
 
 $fp->setParam ( $param );
