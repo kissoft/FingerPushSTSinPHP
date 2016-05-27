@@ -44,6 +44,43 @@ class FingerpushClient {
 	 * @var string message 전체 개수
 	 */
 	protected $lenMessage;
+
+	/**
+	 *
+	 * @var array 대상자에게 보내는 각기 다른 이미지
+	 */
+	protected $arrImage;
+
+	/**
+	 * 
+	 * @var string 이미지 전체 개수
+	 */
+	protected $lenImage;
+
+	/**
+	 *
+	 * @var array 대상자에게 보내는 각기 다른 웹링크
+	 */
+	protected $arrLink;
+
+	/**
+	 * 
+	 * @var string 웹링크 전체 개수
+	 */
+	protected $lenLink;
+
+	/**
+	 *
+	 * @var array 대상자에게 보내는 각기 다른 타이틀
+	 */
+	protected $arrTitle;
+
+	/**
+	 * 
+	 * @var string 타이틀 전체 개수
+	 */
+	protected $lenTitle;
+
 	
 	/**
 	 *
@@ -123,7 +160,60 @@ class FingerpushClient {
 	 */
 	protected $fnm;
 
-	
+	/**
+	 *
+	 * @var string 타이틀
+	 */
+	protected $title;
+
+	/**
+	 *
+	 * @var string 라벨코드
+	 */
+	protected $lcode;
+
+	/**
+	 *
+	 * @var string 배경색상
+	 */
+	protected $bgcolor;
+
+	/**
+	 *
+	 * @var string 폰트색상
+	 */
+	protected $fcolor;
+
+	/**
+	 *
+	 * @var string 에티켓시간 사용 여부
+	 */
+	protected $isetiquette;
+
+	/**
+	 *
+	 * @var string 에티켓 적용 시작시간
+	 */
+	protected $etiquette_stime;	
+
+	/**
+	 *
+	 * @var string 에티켓 적용 종료시간
+	 */
+	protected $etiqutte_etime;
+
+	/**
+	 *
+	 * @var string 안드로이드 용 메시지 우선순위
+	 */
+	protected $and_priority;
+
+	/**
+	 *
+	 * @var string 광고 수신 동의 여부에 따른 메시지 발송 여부 (매뉴얼 참조)
+	 */
+	protected $optagree;
+
 	/**
 	 * FingerpushClient 오브젝트 인스턴스
 	 *
@@ -134,6 +224,9 @@ class FingerpushClient {
 		$this->msg = isset ( $param ['msg'] ) ? $param ['msg'] : '';
 		$this->identity = isset ( $param ['identity'] ) ? $param ['identity'] : NULL;
 		$this->message = isset ( $param ['message'] ) ? $param ['message'] : NULL;
+		$this->arrImage = isset ( $param ['arrImage'] ) ? $param ['arrImage'] : NULL;
+		$this->arrLink = isset ( $param ['arrLink'] ) ? $param ['arrLink'] : NULL;
+		$this->arrTitle = isset ( $param ['arrTitle'] ) ? $param ['arrTitle'] : NULL;
 		
 		if(!$this->msg && $this->message){
 			$this->msg = 'temp message';
@@ -144,6 +237,22 @@ class FingerpushClient {
 				throw new \Exception ( '수신자의 수와 메시지의 수가 다릅니다. : message' );
 			}
 		}
+		if ($this->arrImage) { // arrImage가 존재하면 identity의 개수와 arrImage의 개수를 비교
+			if (count ( $this->arrImage ) != count ( $this->identity )) {
+				throw new \Exception ( '수신자의 수와 이미지 수가 다릅니다. : arrImage' );
+			}
+		}
+		if ($this->arrLink) { // arrLink가 존재하면 identity의 개수와 arrLink의 개수를 비교
+			if (count ( $this->arrLink ) != count ( $this->identity )) {
+				throw new \Exception ( '수신자의 수와 웹링크 수가 다릅니다. : arrLink' );
+			}
+		}
+		if ($this->arrTitle) { // arrTitle이 존재하면 identity의 개수와 arrTitl의 개수를 비교
+			if (count ( $this->message ) != count ( $this->identity )) {
+				throw new \Exception ( '수신자의 수와 타이틀 수가 다릅니다. : arrTitle' );
+			}
+		}
+
 		
 		$this->isa = isset ( $param ['isa'] ) ? $param ['isa'] : 'Y';
 		$this->abdg = isset ( $param ['abdg'] ) ? $param ['abdg'] : '';
@@ -164,6 +273,15 @@ class FingerpushClient {
 		$this->send_state = isset ( $param ['send_state'] ) ? $param ['send_state'] : '';
 		$this->senddate = isset ( $param ['senddate'] ) ? $param ['senddate'] : '';
 		$this->tag = isset ( $param ['tag'] ) ? $param ['tag'] : '';
+		$this->title = isset ( $param ['title'] ) ? $param ['title'] : '';
+		$this->lcode = isset ( $param ['lcode'] ) ? $param ['lcode'] : '';
+		$this->bgcolor = isset ( $param ['bgcolor'] ) ? $param ['bgcolor'] : '';
+		$this->fcolor = isset ( $param ['fcolor'] ) ? $param ['fcolor'] : '';
+		$this->isetiquette = isset ( $param ['isetiquette'] ) ? $param ['isetiquette'] : '';
+		$this->etiquette_stime = isset ( $param ['etiquette_stime'] ) ? $param ['etiquette_stime'] : '';
+		$this->etiquette_etime = isset ( $param ['etiquette_etime'] ) ? $param ['etiquette_etime'] : '';
+		$this->and_priority = isset ( $param ['and_priority'] ) ? $param ['and_priority'] : '';
+		$this->optagree = isset ( $param ['optagree'] ) ? $param ['optagree'] : '';		
 	}
 		
 	/**
@@ -192,7 +310,16 @@ class FingerpushClient {
 				'lngt_message' => $this->lngt_message,
 				'send_state' => $this->send_state,
 				'senddate' => $this->senddate,
-				'tag' => $this->tag
+				'tag' => $this->tag,
+				'title' => $this->title,
+				'lcode' => $this->lcode,
+				'bgcolor' => $this->bgcolor,
+				'fcolor' => $this->fcolor,
+				'isetiquette' => $this->isetiquette,
+				'etiquette_stime' => $this->etiquette_stime,
+				'etiquette_etime' => $this->etiquette_etime,
+				'and_priority' => $this->and_priority,
+				'optagree' => $this->optagree
 		);
 			
 		return $param;
@@ -222,5 +349,29 @@ class FingerpushClient {
 	 */
 	public function getMessage() {
 		return $this->message;
+	}
+
+	/**
+	 *
+	 * @return array
+	 */
+	public function getImage() {
+		return $this->arrImage;
+	}
+
+	/**
+	 *
+	 * @return array
+	 */
+	public function getLink() {
+		return $this->arrLink;
+	}
+
+	/**
+	 *
+	 * @return array
+	 */
+	public function getTitle() {
+		return $this->arrTitle;
 	}
 }
