@@ -18,7 +18,7 @@ class FingerpushRequest {
 	/**
 	 * @const string 
 	 */
-	const SEND_DOMAIN = 'https://www.fingerpush.com';
+	const SEND_DOMAIN = 'https://api.fingerpush.com';
 
 	///////////////////////////////////////
 	/* [PHP 5.6.0 이상에서만 사용하세요.] */
@@ -28,22 +28,22 @@ class FingerpushRequest {
 	/**
 	 * @const string 일괄 발송 API URL
 	 */
-	const SEND_TARGET_URL = self::SEND_DOMAIN.'/rest/sts/v1/setFingerPush.jsp';
+	const SEND_TARGET_URL = self::SEND_DOMAIN.'/rest/sts/v3/setFingerPush.jsp';
 	
 	/**
 	 * @const string 단일 발송 API URL
 	 */
-	const SEND_TARGET_ONE_URL = self::SEND_DOMAIN.'/rest/sts/v1/setSTSpush.jsp';
+	const SEND_TARGET_ONE_URL = self::SEND_DOMAIN.'/rest/sts/v3/setSTSpush.jsp';
 	
 	/**
 	 * @const string 다수 발송(최대 발송 건수 이하) API URL
 	 */
-	const SEND_TARGET_UNDER_MAX_URL = self::SEND_DOMAIN.'/rest/sts/v1/setSTSPushs.jsp';
+	const SEND_TARGET_UNDER_MAX_URL = self::SEND_DOMAIN.'/rest/sts/v3/setSTSPushs.jsp';
 	
 	/**
 	 * @const string 다수 발송(최대 발송 건수 이상) API URL
 	 */
-	const SEND_TARGET_OVER_MAX_URL = self::SEND_DOMAIN.'/rest/sts/v1/setSTSPushs.jsp';
+	const SEND_TARGET_OVER_MAX_URL = self::SEND_DOMAIN.'/rest/sts/v3/setSTSPushs.jsp';
 	///////////////////////////////////////
 	
 	///////////////////////////////////////
@@ -55,28 +55,28 @@ class FingerpushRequest {
 	 * @const string 일괄 발송 API URL
 	 */
 	// public function SEND_TARGET_URL() {
-	// 	return self::SEND_DOMAIN.'/rest/sts/v1/setFingerPush.jsp';
+	// 	return self::SEND_DOMAIN.'/rest/sts/v3/setFingerPush.jsp';
 	// }
 	 
 	/**
 	 * @const string 단일 발송 API URL
 	 */
 	// public function SEND_TARGET_ONE_URL() {
-	// 	return self::SEND_DOMAIN.'/rest/sts/v1/setSTSpush.jsp';
+	// 	return self::SEND_DOMAIN.'/rest/sts/v3/setSTSpush.jsp';
 	// }
 	 
 	/**
 	 * @const string 다수 발송(최대 발송 건수 이하) API URL
 	 */
 	// public function SEND_TARGET_UNDER_MAX_URL() {
-	// 	return self::SEND_DOMAIN.'/rest/sts/v1/setSTSPushs.jsp';
+	// 	return self::SEND_DOMAIN.'/rest/sts/v3/setSTSPushs.jsp';
 	// }
 	 
 	/**
 	 * @const string 다수 발송(최대 발송 건수 이상) API URL
 	 */
 	// public function SEND_TARGET_OVER_MAX_URL() {
-	// 	return self::SEND_DOMAIN.'/rest/sts/v1/setSTSPushs.jsp';
+	// 	return self::SEND_DOMAIN.'/rest/sts/v3/setSTSPushs.jsp';
 	// }
 	///////////////////////////////////////
 	
@@ -222,6 +222,99 @@ class FingerpushRequest {
 	
 		return $paramMessage;
 	}
+
+	/**
+	 *
+	 * @return multitype:string
+	 */
+	public function setParamImage(){
+		$image = $this->client->getImage();
+		$paramImage = array();
+	
+		if ($image){
+			$chunkImages = array_chunk ( $image, self::SEND_ONCE_COUNT );
+	
+			$idx = 0;
+			foreach ($chunkImages as $chunkImage){
+				$i = 0;
+				$count = count($chunkImage);
+				$paramImage[$idx] = '';
+				foreach ($chunkImage as $item){
+					$paramImage[$idx] .= 'prv_attachfname=' . $item;
+					if($i < $count - 1){
+						$paramImage[$idx] .= '&';
+					}
+					$i++;
+				}
+				$idx++;
+			}
+	
+		}
+	
+		return $paramImage;
+	}
+
+	/**
+	 *
+	 * @return multitype:string
+	 */
+	public function setParamLink(){
+		$link = $this->client->getLink();
+		$paramLink = array();
+	
+		if ($link){
+			$chunkLinks = array_chunk ( $link, self::SEND_ONCE_COUNT );
+	
+			$idx = 0;
+			foreach ($chunkLinks as $chunkLink){
+				$i = 0;
+				$count = count($chunkLink);
+				$paramLink[$idx] = '';
+				foreach ($chunkLink as $item){
+					$paramLink[$idx] .= 'prv_linkurl=' . $item;
+					if($i < $count - 1){
+						$paramLink[$idx] .= '&';
+					}
+					$i++;
+				}
+				$idx++;
+			}
+	
+		}
+	
+		return $paramLink;
+	}
+
+	/**
+	 *
+	 * @return multitype:string
+	 */
+	public function setParamTitle(){
+		$title = $this->client->getTitle();
+		$paramTitle = array();
+	
+		if ($title){
+			$chunkTitles = array_chunk ( $title, self::SEND_ONCE_COUNT );
+	
+			$idx = 0;
+			foreach ($chunkTitles as $chunkTitle){
+				$i = 0;
+				$count = count($chunkTitle);
+				$paramTitle[$idx] = '';
+				foreach ($chunkTitle as $item){
+					$paramTitle[$idx] .= 'prv_title=' . $item;
+					if($i < $count - 1){
+						$paramTitle[$idx] .= '&';
+					}
+					$i++;
+				}
+				$idx++;
+			}
+	
+		}
+	
+		return $paramTitle;
+	}
 	
 	/**
 	 *
@@ -242,7 +335,7 @@ class FingerpushRequest {
 			$response = $this->curl ( $url, $param ); // url 전달
 			$result = json_decode ( $response, true );
 			
-			$return = array_merge ( $result, array( 'param'=>$data )); //test
+			$return = array_merge ( $result, array( 'param'=>$data )); //test 
 			
 		} else { // 타겟발송 (동일 메시지, 다른 메시지)
 			
@@ -262,6 +355,9 @@ class FingerpushRequest {
 				$data = array_merge ( $key, array('msgidx' => $msgidx) );
 				$paramIdentitys = $this->setParamIdentity();
 				$paramMessages = $this->setParamMessage();
+				$paramImages = $this->setParamImage();
+				$paramLinks = $this->setParamLink();
+				$paramTitles = $this->setParamTitle();
 				
 				$i = 0;
 				foreach ($paramIdentitys as $paramIdentity){
@@ -270,6 +366,15 @@ class FingerpushRequest {
 					
 					if($paramMessages && $paramMessages[$i]){ // 다른 메시지 발송
 						$param .= '&' . $paramMessages[$i];
+					}
+					if($paramImages && $paramImages[$i]){ // 다른 이미지 발송
+						$param .= '&' . $paramImages[$i];
+					}
+					if($paramLinks && $paramLinks[$i]){ // 다른 웹링크 발송
+						$param .= '&' . $paramLinks[$i];
+					}
+					if($paramTitles && $paramTitles[$i]){ // 다른 타이틀 발송
+						$param .= '&' . $paramTitles[$i];
 					}
 					
 					$response = $this->curl ( $url, $param ); // url 전달
@@ -308,7 +413,7 @@ class FingerpushRequest {
 		$ch = curl_init ();
 		curl_setopt ( $ch, CURLOPT_URL, $url );
 		curl_setopt ( $ch, CURLOPT_SSL_VERIFYPEER, false );
-		curl_setopt ( $ch, CURLOPT_SSLVERSION, 3 );
+		curl_setopt ( $ch, CURLOPT_SSLVERSION, 1 );
 		curl_setopt ( $ch, CURLOPT_HEADER, 0 );
 		curl_setopt ( $ch, CURLOPT_POST, 1 );
 		curl_setopt ( $ch, CURLOPT_TIMEOUT, 30 );
