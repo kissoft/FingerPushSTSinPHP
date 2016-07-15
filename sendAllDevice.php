@@ -2,7 +2,7 @@
 error_reporting ( E_ALL );
 ini_set ( "display_errors", 1 );
 
-require_once ('Fingerpush/autoload.php');
+require_once ('FingerPush/autoload.php');
 
 $key = array (
 		'appkey' => '발급받은  App key', 							// 발급받은 Appkey
