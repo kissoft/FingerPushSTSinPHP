@@ -26,3 +26,14 @@ spl_autoload_register(function ($class){
 		require $file;
 	}
 });
+
+/********************************************************************************
+ * 
+ * PHP 5.3.0 이하 버전 autoload 문제로 안될경우 include 또는 require 객체 사용
+ * 
+ ********************************************************************************/
+ 
+// require_once ('src/FingerPush.php');
+// require_once ('src/FingerPushApp.php');
+// require_once ('src/FingerPushClient.php');
+// require_once ('src/FingerPushRequest.php');
