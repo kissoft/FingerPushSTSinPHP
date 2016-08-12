@@ -11,7 +11,7 @@ PHP에서 Fingerpush Server to Server API를 쉽게 사용하기위한 Class.
 require_once ('Fingerpush/autoload.php');
 ```
 ####※PHP 5.3.0 이하 버전
-PHP 5.3.0 이하 버전 폴더 안에 파일을 사용해 주세요.(PHP 5.2.12 버전까지 호환 확인)
+PHP_5.3.0 폴더 안에 파일을 사용해 주세요. (PHP 5.2.12 버전까지 호환 확인)
 
 
 ##사용하기
