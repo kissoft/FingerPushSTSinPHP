@@ -152,11 +152,11 @@ class FingerPushRequest {
 	// public function getApiUrl() {
 	// 	$identity = $this->client->getIdentity ();
 	// 	if (! count($identity) ) {
-	// 		return static::SEND_TARGET_URL();
+	// 		return $this->SEND_TARGET_URL();
 	// 	} else if (count($identity) < self::SEND_ONCE_COUNT) {
-	// 		return static::SEND_TARGET_UNDER_MAX_URL();
+	// 		return $this->SEND_TARGET_UNDER_MAX_URL();
 	// 	} else {
-	// 		return static::SEND_TARGET_OVER_MAX_URL();
+	// 		return $this->SEND_TARGET_OVER_MAX_URL();
 	// 	}
 	// }
 	///////////////////////////////////////
@@ -419,7 +419,15 @@ class FingerPushRequest {
 		curl_setopt ( $ch, CURLOPT_TIMEOUT, 30 );
 		curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
 		curl_setopt ( $ch, CURLOPT_POSTFIELDS, $param );
-		$response = curl_exec ( $ch );
+		$res = curl_exec ( $ch );
+		/* curl 에러검출 */
+		$cErrno = curl_errno($ch);
+		if ($cErrno == 0) {
+			$response = $res;
+		} else {
+			echo "Curl Fetch Error : ".$cErrno." - ".curl_error($ch);
+			$response = exit;
+		}
 		curl_close ( $ch );
 		return $response;
 	}
