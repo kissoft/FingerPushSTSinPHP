@@ -10,6 +10,8 @@ PHP에서 Fingerpush Server to Server API를 쉽게 사용하기위한 Class.
 ``` php
 require_once ('Fingerpush/autoload.php');
 ```
+####※PHP 5.3.0 이하 버전
+PHP 5.3.0 이하 버전 폴더 안에 파일을 사용해 주세요.(PHP 5.2.12 버전까지 호환 확인)
 
 
 ##사용하기
@@ -22,7 +24,7 @@ require_once ('Fingerpush/autoload.php');
 + `customerkey` 발급 받은 customer key
 
 각 키는 [핑거푸시홈페이지](https://www.fingerpush.com/)에서 발급가능하며, `customerkey`는 Pro이상의 서비스에 가입하여야 발급가능합니다.
- 
+
 #####Example
 ``` php
 $key = array (
@@ -200,3 +202,6 @@ Message | 결과 메시지
 ```js
 {“result” : “200”, “msgIdx” :  “A1DS33DDSQ2321”, “processCode” : “20001”, “message” : “메시지 등록이 처리되었습니다. 발급받은 메시지 아이디로 대상자 등록을 시작해 주세요.”}
 ```
+
+
+
