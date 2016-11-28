@@ -33,6 +33,7 @@ for ($i=0; $i<=5000; $i++){
 //$arrayMessage[] .= '에러유발';
 
 $param = array (
+	        'msg' => 'message',
 		'identity' => $arrayUser,
 		'message' => $arrayMessage,
 		// 'arrImage' => $arrayImage,
