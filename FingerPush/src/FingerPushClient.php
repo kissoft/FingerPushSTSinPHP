@@ -229,7 +229,7 @@ class FingerPushClient {
 		$this->arrTitle = isset ( $param ['arrTitle'] ) ? $param ['arrTitle'] : NULL;
 		
 		if(!$this->msg && $this->message){
-			$this->msg = 'temp message';
+			$this->msg = ' ';
 		}
 		
 		if ($this->message) { // message가 존재하면 identity의 개수와 message의 개수를 비교
