@@ -207,6 +207,7 @@ class FingerPushRequest {
 				$count = count($chunkMessage);
 				$paramMessage[$idx] = '';
 				foreach ($chunkMessage as $item){
+					$item = $this->chgSpCharater($item);
 					$paramMessage[$idx] .= 'message=' . $item;
 					if($i < $count - 1){
 						$paramMessage[$idx] .= '&';
@@ -238,6 +239,7 @@ class FingerPushRequest {
 				$count = count($chunkImage);
 				$paramImage[$idx] = '';
 				foreach ($chunkImage as $item){
+					$item = $this->chgSpCharater($item);
 					$paramImage[$idx] .= 'prv_attachfname=' . $item;
 					if($i < $count - 1){
 						$paramImage[$idx] .= '&';
@@ -269,6 +271,7 @@ class FingerPushRequest {
 				$count = count($chunkLink);
 				$paramLink[$idx] = '';
 				foreach ($chunkLink as $item){
+					$item = $this->chgSpCharater($item);
 					$paramLink[$idx] .= 'prv_linkurl=' . $item;
 					if($i < $count - 1){
 						$paramLink[$idx] .= '&';
@@ -300,6 +303,7 @@ class FingerPushRequest {
 				$count = count($chunkTitle);
 				$paramTitle[$idx] = '';
 				foreach ($chunkTitle as $item){
+					$item = $this->chgSpCharater($item);
 					$paramTitle[$idx] .= 'prv_title=' . $item;
 					if($i < $count - 1){
 						$paramTitle[$idx] .= '&';
@@ -363,19 +367,15 @@ class FingerPushRequest {
 					$param .= '&' . $paramIdentity;
 					
 					if($paramMessages && $paramMessages[$i]){ // 다른 메시지 발송
-						$paramMessages[$i] = $this->chgSpCharater($paramMessages[$i]);
 						$param .= '&' . $paramMessages[$i];
 					}
 					if($paramImages && $paramImages[$i]){ // 다른 이미지 발송
-						$paramImages[$i] = $this->chgSpCharater($paramImages[$i]);
 						$param .= '&' . $paramImages[$i];
 					}
 					if($paramLinks && $paramLinks[$i]){ // 다른 웹링크 발송
-						$paramLinks[$i] = $this->chgSpCharater($paramLinks[$i]);
 						$param .= '&' . $paramLinks[$i];
 					}
 					if($paramTitles && $paramTitles[$i]){ // 다른 타이틀 발송
-						$paramTitles[$i] = $this->chgSpCharater($paramTitles[$i]);
 						$param .= '&' . $paramTitles[$i];
 					}
 					
@@ -433,11 +433,5 @@ class FingerPushRequest {
 		}
 		curl_close ( $ch );
 		return $response;
-	}
-	
-	public function chgSpCharater($strTxt){
-		$strTxt = str_replace("%", "%25", $strTxt);
-		$strTxt = str_replace("&", "%26", $strTxt);
-		return $strTxt;
 	}
 }
