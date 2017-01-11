@@ -363,15 +363,19 @@ class FingerPushRequest {
 					$param .= '&' . $paramIdentity;
 					
 					if($paramMessages && $paramMessages[$i]){ // 다른 메시지 발송
+						$paramMessages[$i] = $this->chgSpCharater($paramMessages[$i]);
 						$param .= '&' . $paramMessages[$i];
 					}
 					if($paramImages && $paramImages[$i]){ // 다른 이미지 발송
+						$paramImages[$i] = $this->chgSpCharater($paramImages[$i]);
 						$param .= '&' . $paramImages[$i];
 					}
 					if($paramLinks && $paramLinks[$i]){ // 다른 웹링크 발송
+						$paramLinks[$i] = $this->chgSpCharater($paramLinks[$i]);
 						$param .= '&' . $paramLinks[$i];
 					}
 					if($paramTitles && $paramTitles[$i]){ // 다른 타이틀 발송
+						$paramTitles[$i] = $this->chgSpCharater($paramTitles[$i]);
 						$param .= '&' . $paramTitles[$i];
 					}
 					
@@ -429,5 +433,11 @@ class FingerPushRequest {
 		}
 		curl_close ( $ch );
 		return $response;
+	}
+	
+	public function chgSpCharater($strTxt){
+		$strTxt = str_replace("%", "%25", $strTxt);
+		$strTxt = str_replace("&", "%26", $strTxt);
+		return $strTxt;
 	}
 }
