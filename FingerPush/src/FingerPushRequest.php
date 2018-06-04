@@ -18,7 +18,7 @@ class FingerPushRequest {
 	/**
 	 * @const string 
 	 */
-	const SEND_DOMAIN = 'https://api.fingerpush.com';
+	const SEND_DOMAIN = 'https://api-v2.fingerpush.com';
 
 	///////////////////////////////////////
 	/* [PHP 5.6.0 이상에서만 사용하세요.] */
