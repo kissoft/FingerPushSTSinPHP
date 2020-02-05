@@ -1,24 +1,29 @@
-FingerPushSTSinPHP
+# FingerPushSTSinPHP
 =======
 PHP에서 Fingerpush Server to Server API를 쉽게 사용하기위한 Class.
 
 
-##설치하기
+## 설치하기
 소스를 다운받아 압축을 풀어 Fingerpush폴더를 적당한 곳에 위치하고 자신의 소스에 포함시킵니다.
 
-#####Example
+## Example
 ``` php
 require_once ('Fingerpush/autoload.php');
 ```
-####※PHP 5.3.0 이하 버전
+
+## ※PHP 5.3.0 이하 버전
 PHP_5.3.0 폴더 안에 파일을 사용해 주세요. (PHP 5.2.12 버전까지 호환 확인)
-####※PHP 5.6.0 버전
+
+## ※PHP 5.6.0 버전
 PHP_5.6.0 폴더 안에 파일을 사용해 주세요. (PHP 5.6.40 버전까지 호환 확인)
-####※PHP 7.2.0 이상 버전
+
+## ※PHP 7.2.0 이상 버전
 PHP_7.2.0 폴더 안에 파일을 사용해 주세요. (PHP 7.3.13 버전까지 호환 확인)
 
+### 각 버전에 맞는 폴더를 적용 하시면 됩니다.
 
-##사용하기
+
+## 사용하기
 ###기본 설정
 
 기본 앱 정보를 세팅하고 사용을 위해 클레스를 선언합니다.
@@ -29,7 +34,7 @@ PHP_7.2.0 폴더 안에 파일을 사용해 주세요. (PHP 7.3.13 버전까지 
 
 각 키는 [핑거푸시홈페이지](https://www.fingerpush.com/)에서 발급가능하며, `customerkey`는 Pro이상의 서비스에 가입하여야 발급가능합니다.
 
-#####Example
+## Example
 ``` php
 $key = array (
 	'appkey' => '발급받은 App key',
@@ -41,7 +46,7 @@ $fp = new Fingerpush\Fingerpush ( $key );
 ```
 
 
-###옵션 설정
+## 옵션 설정
 
 발송을 위한 옵션을 세팅합니다.
 필요한 옵션을 세팅하고 배열로 담아 `setParam`함수에 전달합니다.
@@ -82,9 +87,9 @@ and_priority | string | M | 안드로이드용 메시지 우선순위 (H : 높�
 optagree | string | 0000 | 0000 : default, 광고 수신 동의 여부에 관계없이 푸시 수신자 모두에게 발송. 1000 : 광고수신 동의한 디바이스에만 메시지 발송
 
 
-####일괄 발송
+## 일괄 발송
 앱을 사용하는 모든 사용자에게 동일한 메시지를 발송합니다. 발송하고자 하는 메시지를 `msg`에 담아 전달합니다.
-#####Example
+###Example
 ``` php
 $param = array (
 	'msg' => '일괄발송 테스트',
@@ -121,11 +126,12 @@ $param = array (
 
 $fp -> setParam($param);
 ```
-####다수의 대상자 발송
+
+## 다수의 대상자 발송
 다수의 사용자에게 메시지를 전송할 경우, 데이터 베이스나 리스트의 사용자 목록을 `identity`에 배열로 담아 전달합니다.
 사용자에게 가기 다른 메시지를 전달하고자 할 경우, `identity`배열과 동일한 크기로 배열에 담아 `message`에 전달합니다.
 `message`의 값이 없는 경우, `msg`의 값으로 모두 동일한 메시지가 전송됩니다.
-#####Example
+### Example
 ``` php
 $arrayUser = array();
 $arrayMessage = array();
@@ -176,16 +182,16 @@ $fp->setParam ( $param );
 ```
 
 
-###발송 하기
+## 발송 하기
 간단히 `sendPush`함수만으로 발송할 수 있습니다.
 
-#####Example
+### Example
 ``` php
 $response = $fp->sendPush ();
 ```
 
 
-###발송 결과
+## 발송 결과
 발송을 완료하면 JSON으로 결과를 받을 수 있습니다.
 
 Response Key | Description
@@ -195,7 +201,7 @@ msgIdx | 메시지 번호
 processCode | 메시지 처리 단계
 Message | 결과 메시지
 
-####result code
+## result code
 코드 | 내용 | 비고
 ---- | ---- | ----
 200 | 정상처리 됨 | 
@@ -205,17 +211,16 @@ Message | 결과 메시지
 500 | 서버에러 | 
 504 | 발송 대상 처리 중 에러 | 발송 대상 데이터 확인
 
-####processCode code
+## processCode code
 코드 | 내용 | 비고
 ---- | ---- | ----
 20001 | 푸시 메시지 등록 정상 처리 | 메시지 아이디가 반환됨.
 20002 | 발송대상자 등록 정상 처리 | 
 20003 | 푸시 메시지 등록 완료 | 
 
-#####Example
+## Example
 ```js
 {“result” : “200”, “msgIdx” :  “A1DS33DDSQ2321”, “processCode” : “20001”, “message” : “메시지 등록이 처리되었습니다. 발급받은 메시지 아이디로 대상자 등록을 시작해 주세요.”}
 ```
-
 
 
