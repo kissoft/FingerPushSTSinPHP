@@ -10,7 +10,7 @@ $key = array (
 		'customerkey' => '발급받은 Customer key' 					// 발급 받은 customer key - Pro 이상의 서비스 사용시
 );
 
-$fp = new FingerPush\FingerPush ( $key );
+$fp = new FingerPush ( $key );
 
 /**
  * 500건 이상 발송
@@ -29,8 +29,6 @@ for ($i=0; $i<=5000; $i++){
 	//$arrayLink[$i] = 'htts://www.fingerpush.com';
 	//$arrayTitle[$i] = $arrayUser[$i].'님을 위한 맞춤 푸시';
 }
-
-//$arrayMessage[] .= '에러유발';
 
 $param = array (
 	        'msg' => 'message',

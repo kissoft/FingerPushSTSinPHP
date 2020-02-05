@@ -10,7 +10,7 @@ $key = array (
 		'customerkey' => '발급받은 Customer key' 					// 발급 받은 customer key - Pro 이상의 서비스 사용시
 );
 
-$fp = new FingerPush\FingerPush ( $key );
+$fp = new FingerPush ( $key );
 
 /**
  * 일괄발송

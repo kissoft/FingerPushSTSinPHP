@@ -12,6 +12,10 @@ require_once ('Fingerpush/autoload.php');
 ```
 ####※PHP 5.3.0 이하 버전
 PHP_5.3.0 폴더 안에 파일을 사용해 주세요. (PHP 5.2.12 버전까지 호환 확인)
+####※PHP 5.6.0 버전
+PHP_5.6.0 폴더 안에 파일을 사용해 주세요. (PHP 5.6.40 버전까지 호환 확인)
+####※PHP 7.2.0 이상 버전
+PHP_7.2.0 폴더 안에 파일을 사용해 주세요. (PHP 7.3.13 버전까지 호환 확인)
 
 
 ##사용하기
@@ -28,9 +32,9 @@ PHP_5.3.0 폴더 안에 파일을 사용해 주세요. (PHP 5.2.12 버전까지 
 #####Example
 ``` php
 $key = array (
-		'appkey' => '발급받은 App key',
-		'appsecret' => '발급받은 AppSecret',
-		'customerkey' => '발급받은 Customer key'
+	'appkey' => '발급받은 App key',
+	'appsecret' => '발급받은 AppSecret',
+	'customerkey' => '발급받은 Customer key'
 );
 
 $fp = new Fingerpush\Fingerpush ( $key );
@@ -83,39 +87,39 @@ optagree | string | 0000 | 0000 : default, 광고 수신 동의 여부에 관계
 #####Example
 ``` php
 $param = array (
-		'msg' => '일괄발송 테스트',
-		// 'isa' => '',
-		// 'abdg' => '',
-		// 'asnd' => '',
-		// 'isi' => '',
-		// 'ibdg' => '',
-		// 'isnd' => '',
-		// 'ck1' => '',
-		// 'ck2' => '',
-		// 'ck3' => '',
-		// 'cv1' => '',
-		// 'cv2' => '',
-		// 'cv3' => '',
-		// 'fnm' => ''
-		// 'link' => '',
-		// 'fnm' => '',
-		// 'mode' => '',
-		// 'lngt_message' => '',
-		// 'send_state' => '',
-		// 'senddate' => '',
-		// 'tag' => '',
-		// 'title' => '',
-	    // 'bgcolor' => '#FFFFFF',
-	    // 'fcolor' => '#4374D9',
-	    // 'lcode' => '',
-	    // 'isetiquette' => 'Y',
-	    // 'etiquette_stime' => '21',
-	    // 'etiquette_etime' => '8',
-	    // 'and_priority' => 'M',
-	    // 'optagree' => '0000'
+	'msg' => '일괄발송 테스트',
+	// 'title' => '', 
+	// 'isa' => '',
+	// 'abdg' => '',
+	// 'asnd' => '',
+	// 'isi' => '',
+	// 'ibdg' => '',
+	// 'isnd' => '',
+	// 'ck1' => '',
+	// 'ck2' => '',
+	// 'ck3' => '',
+	// 'cv1' => '',
+	// 'cv2' => '',
+	// 'cv3' => '',
+	// 'fnm' => '',
+	// 'link' => '',
+	// 'mode' => 'DEFT',
+	// 'lngt_message' => '',
+	// 'send_state' => '',
+	// 'senddate' => '',
+	// 'tag' => '',
+	// 'beschmode' => '0001',
+	// 'bgcolor' => '#ffffff',
+	// 'fcolor' => '#000000',
+	// 'lcode' => '',
+	// 'isetiquette' => 'Y',
+	// 'etiquette_stime' => '21',
+	// 'etiquette_etime' => '8',
+	// 'and_priority' => 'M',
+	// 'optagree' => '0000'
 );
 
-$fp->setParam ( $param );
+$fp -> setParam($param);
 ```
 ####다수의 대상자 발송
 다수의 사용자에게 메시지를 전송할 경우, 데이터 베이스나 리스트의 사용자 목록을 `identity`에 배열로 담아 전달합니다.
@@ -131,31 +135,41 @@ for ($i=0; $i<=5000; $i++){
 	$arrayMessage[$i] = $arrayUser[$i].'님 안녕하세요. 핑거푸시입니다.';
 }
 
+/* 타겟 발송시 msg, title값은 핑거푸시 발송이력에 보여질 내용입니다, 개별 발송 정보는 arrTitle, arrMessage값으로 발송됩니다. */
 $param = array (
-		'identity' => $arrayUser,
-		'message' => $arrayMessage,
-		// 'isa' => '',
-		// 'abdg' => '',
-		// 'asnd' => '',
-		// 'isi' => '',
-		// 'ibdg' => '',
-		// 'isnd' => '',
-		// 'ck1' => '',
-		// 'ck2' => '',
-		// 'ck3' => '',
-		// 'cv1' => '',
-		// 'cv2' => '',
-		// 'cv3' => '',
-		// 'fnm' => ''
-		// 'title' => '',
-	    // 'bgcolor' => '#FFFFFF',
-	    // 'fcolor' => '#4374D9',
-	    // 'lcode' => '',
-	    // 'isetiquette' => 'Y',
-	    // 'etiquette_stime' => '20',
-	    // 'etiquette_etime' => '8',
-	    // 'and_priority' => 'M',
-	    // 'optagree' => '0000'
+	'msg' => '500건 이상 발송 테스트',
+	'title' => '500건 이상 발송 테스트',
+	'identity' => $arrayUser,
+	'message' => $arrayMessage,
+	// 'arrImage' => $arrayImage,
+	// 'arrLink' => $arrayLink,
+	// 'arrTitle' => $arrayTitle,
+	// 'isa' => '',
+	// 'abdg' => '',
+	// 'asnd' => '',
+	// 'isi' => '',
+	// 'ibdg' => '',
+	// 'isnd' => '',
+	// 'ck1' => '',
+	// 'ck2' => '',
+	// 'ck3' => '',
+	// 'cv1' => '',
+	// 'cv2' => '',
+	// 'cv3' => '',
+	// 'fnm' => '',
+	// 'link' => '',
+	// 'mode' => 'STOS',
+	// 'lngt_message' => '',
+	// 'send_state' => '0001',
+	// 'senddate' => '',
+	// 'bgcolor' => '#FFFFFF',
+	// 'fcolor' => '#000000',
+	// 'lcode' => '',
+	// 'isetiquette' => 'Y',
+	// 'etiquette_stime' => '20',
+	// 'etiquette_etime' => '8',
+	// 'and_priority' => 'M',
+	// 'optagree' => '1000'
 );
 
 $fp->setParam ( $param );
