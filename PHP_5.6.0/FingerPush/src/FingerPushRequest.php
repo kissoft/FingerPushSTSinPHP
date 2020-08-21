@@ -1,7 +1,5 @@
 <?php
 
-namespace FingerPush;
-
 /**
  * API URL을 할당하고 발송하는 클래스
  *

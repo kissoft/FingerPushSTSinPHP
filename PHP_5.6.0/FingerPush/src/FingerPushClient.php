@@ -1,7 +1,5 @@
 <?php
 
-namespace FingerPush;
-
 /**
  * Fingerpush parameter 클래스
  *

@@ -1,7 +1,5 @@
 <?php
 
-namespace FingerPush;
-
 /**
  * Fingerpush 인증 관리 클래스
  * 
