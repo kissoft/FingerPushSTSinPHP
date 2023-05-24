@@ -26,22 +26,22 @@ class FingerPushRequest {
 	/**
 	 * @const string 일괄 발송 API URL
 	 */
-	const SEND_TARGET_URL = self::SEND_DOMAIN.'/rest/sts/v3/setFingerPush.jsp';
+	const SEND_TARGET_URL = self::SEND_DOMAIN.'/rest/sts/v4/setFingerPush.jsp';
 	
 	/**
 	 * @const string 단일 발송 API URL
 	 */
-	const SEND_TARGET_ONE_URL = self::SEND_DOMAIN.'/rest/sts/v3/setSTSpush.jsp';
+	const SEND_TARGET_ONE_URL = self::SEND_DOMAIN.'/rest/sts/v4/setSTSpush.jsp';
 	
 	/**
 	 * @const string 다수 발송(최대 발송 건수 이하) API URL
 	 */
-	const SEND_TARGET_UNDER_MAX_URL = self::SEND_DOMAIN.'/rest/sts/v3/setSTSPushs.jsp';
+	const SEND_TARGET_UNDER_MAX_URL = self::SEND_DOMAIN.'/rest/sts/v4/setSTSPushs.jsp';
 	
 	/**
 	 * @const string 다수 발송(최대 발송 건수 이상) API URL
 	 */
-	const SEND_TARGET_OVER_MAX_URL = self::SEND_DOMAIN.'/rest/sts/v3/setSTSPushs.jsp';
+	const SEND_TARGET_OVER_MAX_URL = self::SEND_DOMAIN.'/rest/sts/v4/setSTSPushs.jsp';
 	///////////////////////////////////////
 	
 	///////////////////////////////////////
@@ -53,28 +53,28 @@ class FingerPushRequest {
 	 * @const string 일괄 발송 API URL
 	 */
 	// public function SEND_TARGET_URL() {
-	// 	return self::SEND_DOMAIN.'/rest/sts/v3/setFingerPush.jsp';
+	// 	return self::SEND_DOMAIN.'/rest/sts/v4/setFingerPush.jsp';
 	// }
 	 
 	/**
 	 * @const string 단일 발송 API URL
 	 */
 	// public function SEND_TARGET_ONE_URL() {
-	// 	return self::SEND_DOMAIN.'/rest/sts/v3/setSTSpush.jsp';
+	// 	return self::SEND_DOMAIN.'/rest/sts/v4/setSTSpush.jsp';
 	// }
 	 
 	/**
 	 * @const string 다수 발송(최대 발송 건수 이하) API URL
 	 */
 	// public function SEND_TARGET_UNDER_MAX_URL() {
-	// 	return self::SEND_DOMAIN.'/rest/sts/v3/setSTSPushs.jsp';
+	// 	return self::SEND_DOMAIN.'/rest/sts/v4/setSTSPushs.jsp';
 	// }
 	 
 	/**
 	 * @const string 다수 발송(최대 발송 건수 이상) API URL
 	 */
 	// public function SEND_TARGET_OVER_MAX_URL() {
-	// 	return self::SEND_DOMAIN.'/rest/sts/v3/setSTSPushs.jsp';
+	// 	return self::SEND_DOMAIN.'/rest/sts/v4/setSTSPushs.jsp';
 	// }
 	///////////////////////////////////////
 	
